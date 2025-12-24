@@ -1,0 +1,11 @@
+lmdeploy
+librosa
+fastaudiosr @ git+https://github.com/ysharma3501/FlashSR.git
+ncodec @ git+https://github.com/ysharma3501/FastBiCodec.git
+einops
+onnxruntime
+soundfile
+torchaudio
+transformers
+omegaconf
+gradio
