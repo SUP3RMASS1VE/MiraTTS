@@ -34,8 +34,6 @@ cd MiraTTS
 uv venv
 # Windows
 .\env\Scripts\activate
-# Linux/Mac
-source env/bin/activate
 ```
 
 3. Install dependencies:
@@ -110,3 +108,4 @@ Based on the [MiraTTS](https://huggingface.co/YatharthS/MiraTTS) model by Yathar
 ## 📄 License
 
 MIT License
+
