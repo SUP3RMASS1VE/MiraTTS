@@ -96,7 +96,7 @@ def generate_speech(text, prompt_audio_path, temperature=0.8, top_p=0.95, top_k=
             temperature=temperature,
             top_p=top_p,
             top_k=int(top_k),
-            max_new_tokens=1024,
+            max_new_tokens=2048,
             repetition_penalty=1.2
         )
             
