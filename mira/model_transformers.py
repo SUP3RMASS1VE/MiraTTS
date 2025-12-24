@@ -183,6 +183,9 @@ class MiraTTS:
             # Create progress streamer
             streamer = ProgressStreamer(self.tokenizer, max_tokens=self.gen_config.max_new_tokens)
             
+            # Store input length to extract only new tokens later
+            input_length = inputs['input_ids'].shape[1]
+            
             # Generate with progress bar
             with torch.no_grad():
                 outputs = self.model.generate(
@@ -192,12 +195,9 @@ class MiraTTS:
                     streamer=streamer,
                 )
             
-            # Decode the generated tokens
-            generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=False)
-            
-            # Extract only the new tokens (remove the prompt)
-            prompt_len = len(formatted_prompt)
-            response_text = generated_text[prompt_len:].strip()
+            # Extract only the newly generated tokens (not the prompt)
+            new_tokens = outputs[0][input_length:]
+            response_text = self.tokenizer.decode(new_tokens, skip_special_tokens=False).strip()
             
             # Decode audio from the response
             print("Decoding audio...")
